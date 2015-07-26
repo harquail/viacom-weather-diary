@@ -34,10 +34,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYk-cd-1xM">
-                                <rect key="frame" x="184" y="555" width="46" height="30"/>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-f1-yAV" customClass="SKView">
+                                <rect key="frame" x="0.0" y="158" width="419" height="578"/>
+                                <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYk-cd-1xM" customClass="SFlatButton" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="112" y="577" width="190" height="40"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" updatesFrequently="YES"/>
+                                </accessibility>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="46" id="mAV-Ft-xjI"/>
+                                    <constraint firstAttribute="height" constant="40" id="rAA-kp-djb"/>
                                 </constraints>
                                 <state key="normal" title="Read">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,27 +53,29 @@
                                     <segue destination="Em2-xm-xCm" kind="show" id="Cfd-pZ-VIR"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9b-y1-HBw">
-                                <rect key="frame" x="184" y="588" width="46" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.png" translatesAutoresizingMaskIntoConstraints="NO" id="2TR-ND-ITT">
+                                <rect key="frame" x="-121" y="28" width="656" height="168"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="168" id="LgX-Mq-hIp"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Agh-PN-MR7" customClass="SFlatButton" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="112" y="635" width="190" height="40"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" none="YES" button="YES" updatesFrequently="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cme-2C-ETJ"/>
+                                </constraints>
                                 <state key="normal" title="Write">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="ra9-aA-m3o" kind="show" id="ehZ-b1-xVB"/>
+                                    <segue destination="ra9-aA-m3o" kind="show" id="St8-d5-Hcl"/>
                                 </connections>
                             </button>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n2q-f1-yAV">
-                                <rect key="frame" x="0.0" y="158" width="419" height="578"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud.png" translatesAutoresizingMaskIntoConstraints="NO" id="2TR-ND-ITT">
-                                <rect key="frame" x="-121" y="28" width="656" height="168"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="168" id="bNE-rg-Ufs"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainy Day Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-SN-VR3">
-                                <rect key="frame" x="-121" y="270" width="656" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rainy Day Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-SN-VR3">
+                                <rect key="frame" x="-121" y="235" width="656" height="47"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -74,31 +83,30 @@
                         </subviews>
                         <color key="backgroundColor" red="0.1333333333" green="0.1333333333" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="QmO-SN-VR3" firstAttribute="top" secondItem="2TR-ND-ITT" secondAttribute="bottom" constant="74" id="2CO-kA-G1d"/>
-                            <constraint firstItem="QmO-SN-VR3" firstAttribute="centerX" secondItem="P9b-y1-HBw" secondAttribute="centerX" id="2aC-3O-XsO"/>
+                            <constraint firstItem="Agh-PN-MR7" firstAttribute="leading" secondItem="SYk-cd-1xM" secondAttribute="leading" id="3cr-m9-kF8"/>
+                            <constraint firstItem="2TR-ND-ITT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4GA-B5-2hD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n2q-f1-yAV" secondAttribute="trailing" constant="-21" id="7oN-Vz-Tls"/>
                             <constraint firstItem="n2q-f1-yAV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="AaL-gW-oul"/>
-                            <constraint firstItem="QmO-SN-VR3" firstAttribute="centerX" secondItem="2TR-ND-ITT" secondAttribute="centerX" id="CKy-At-Mvp"/>
+                            <constraint firstItem="SYk-cd-1xM" firstAttribute="trailing" secondItem="Agh-PN-MR7" secondAttribute="trailing" id="CJO-MJ-a4G"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Agh-PN-MR7" secondAttribute="bottom" constant="61" id="Fg4-PD-POP"/>
+                            <constraint firstItem="Agh-PN-MR7" firstAttribute="top" secondItem="SYk-cd-1xM" secondAttribute="bottom" constant="18" id="GF2-Vc-3W2"/>
+                            <constraint firstItem="SYk-cd-1xM" firstAttribute="centerX" secondItem="QmO-SN-VR3" secondAttribute="centerX" id="Hdm-wn-Dex"/>
+                            <constraint firstItem="QmO-SN-VR3" firstAttribute="top" secondItem="2TR-ND-ITT" secondAttribute="bottom" constant="74" id="I81-aX-zD0"/>
                             <constraint firstItem="n2q-f1-yAV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Jof-zq-Mws"/>
-                            <constraint firstItem="P9b-y1-HBw" firstAttribute="top" secondItem="SYk-cd-1xM" secondAttribute="bottom" constant="3" id="Kuf-Mb-5zm"/>
-                            <constraint firstItem="QmO-SN-VR3" firstAttribute="centerX" secondItem="SYk-cd-1xM" secondAttribute="centerX" id="Ocz-3D-XVz"/>
-                            <constraint firstItem="2TR-ND-ITT" firstAttribute="centerX" secondItem="P9b-y1-HBw" secondAttribute="centerX" id="RhA-yv-LcT"/>
+                            <constraint firstItem="QmO-SN-VR3" firstAttribute="leading" secondItem="2TR-ND-ITT" secondAttribute="leading" id="LLE-IV-Haw"/>
+                            <constraint firstItem="QmO-SN-VR3" firstAttribute="trailing" secondItem="2TR-ND-ITT" secondAttribute="trailing" id="MQv-bZ-skS"/>
                             <constraint firstItem="n2q-f1-yAV" firstAttribute="top" secondItem="2TR-ND-ITT" secondAttribute="bottom" constant="-38" id="T07-dc-cwP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="P9b-y1-HBw" secondAttribute="bottom" constant="118" id="XMi-gs-6gs"/>
-                            <constraint firstItem="2TR-ND-ITT" firstAttribute="centerX" secondItem="SYk-cd-1xM" secondAttribute="centerX" id="h5M-8D-bxA"/>
-                            <constraint firstItem="2TR-ND-ITT" firstAttribute="centerX" secondItem="QmO-SN-VR3" secondAttribute="centerX" id="j1P-gn-bkk"/>
-                            <constraint firstItem="P9b-y1-HBw" firstAttribute="leading" secondItem="SYk-cd-1xM" secondAttribute="leading" id="nuu-TY-Ooh"/>
-                            <constraint firstItem="QmO-SN-VR3" firstAttribute="width" secondItem="2TR-ND-ITT" secondAttribute="width" id="so3-EQ-gh6"/>
-                            <constraint firstItem="2TR-ND-ITT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="vzD-pw-ikP"/>
-                            <constraint firstAttribute="centerX" secondItem="2TR-ND-ITT" secondAttribute="centerX" id="xl7-6Y-rmQ"/>
+                            <constraint firstItem="SYk-cd-1xM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="96" id="spU-XX-Scz"/>
+                            <constraint firstItem="2TR-ND-ITT" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="xPY-Mf-myL"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Wnj-pb-8vB"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="readButton" destination="P9b-y1-HBw" id="GQa-i4-dP2"/>
-                        <outlet property="writeButton" destination="P9b-y1-HBw" id="dEP-0Z-CX5"/>
+                        <outlet property="rainyView" destination="n2q-f1-yAV" id="gM7-7o-KCf"/>
+                        <outlet property="readButton" destination="SYk-cd-1xM" id="SfY-pb-PqU"/>
+                        <outlet property="writeButton" destination="Agh-PN-MR7" id="0Rg-yn-t2V"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -120,7 +128,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="journalEntryCell" id="Zyb-9q-idA">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="journalEntryCell" id="Zyb-9q-idA" customClass="JournalEntryCollectionViewCell" customModule="ParseStarterProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -153,6 +161,10 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="day" destination="IWf-m3-8kd" id="Jji-Fq-A4R"/>
+                                    <outlet property="month" destination="iHd-ta-08g" id="rR5-BO-6Ca"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -172,7 +184,7 @@
         <!--WriteViewController-->
         <scene sceneID="n4J-mz-GKm">
             <objects>
-                <viewController title="WriteViewController" id="ra9-aA-m3o" sceneMemberID="viewController">
+                <viewController title="WriteViewController" id="ra9-aA-m3o" customClass="WritingViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ThT-5W-vFH"/>
                         <viewControllerLayoutGuide type="bottom" id="57U-Eh-c9i"/>
@@ -210,6 +222,6 @@
         <image name="cloud.png" width="656" height="362"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ehZ-b1-xVB"/>
+        <segue reference="FYQ-to-LrH"/>
     </inferredMetricsTieBreakers>
 </document>

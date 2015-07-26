@@ -10,8 +10,6 @@ Install using [CocoaPods](http://cocoapods.org).
 
 Add a file called "APIKeysAndSecrets.swift" with API keys from [Parse](http://www.parse.com) and [Forecast.io](http://forecast.io)
 
-```let kForecastAPIKey = "KEY"\n
-let kParseApplicationID = "ID"\n
-let kParseClientKey = "KEY"```
+```let kForecastAPIKey = "KEY", kParseApplicationID = "ID, kParseClientKey = "KEY"```
 
 This was a challenge for an interview — inspired by Viacom Labs

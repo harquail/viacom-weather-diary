@@ -5,10 +5,10 @@
 //
 
 import UIKit
-import Parse
 import SpriteKit
 
 class SplashViewController: UIViewController {
+    
     @IBOutlet var writeButton: SFlatButton!
     @IBOutlet var readButton: SFlatButton!
     @IBOutlet var rainyView: SKView!

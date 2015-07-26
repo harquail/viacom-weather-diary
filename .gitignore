@@ -25,7 +25,7 @@ DerivedData
 #
 Pods/
 
-*/APIKeysAndSecrets.swift
+ParseStarterProject/APIKeysAndSecrets.swift
 
 # Carthage
 #

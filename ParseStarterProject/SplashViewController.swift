@@ -8,6 +8,8 @@ import UIKit
 import Parse
 
 class SplashViewController: UIViewController {
+    @IBOutlet var writeButton: UIButton!
+    @IBOutlet var readButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()

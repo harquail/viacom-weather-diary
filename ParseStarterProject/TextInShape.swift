@@ -30,6 +30,19 @@ class TextInShape: UITextView {
 //    return raindrop;
 //    }
     
+    
+    private func rainDropShape() -> UIBezierPath{
+        
+        return UIBezierPath()
+    
+    }
+    
+    private func sunShape() -> UIBezierPath{
+        
+        return UIBezierPath()
+        
+    }
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

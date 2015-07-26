@@ -203,15 +203,28 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orc-0T-7k0" userLabel="emotion">
+                                <rect key="frame" x="344" y="661" width="70" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="75" id="rCU-MC-bvD"/>
+                                    <constraint firstAttribute="width" constant="70" id="t5S-az-NBC"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="leading" secondItem="zE5-LP-fRS" secondAttribute="leading" id="5Gp-le-Ibm"/>
                             <constraint firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="8v5-H4-C3Y"/>
+                            <constraint firstItem="orc-0T-7k0" firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="iyf-uN-poJ"/>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="top" secondItem="zE5-LP-fRS" secondAttribute="top" id="jcx-pZ-xQe"/>
+                            <constraint firstItem="orc-0T-7k0" firstAttribute="bottom" secondItem="57U-Eh-c9i" secondAttribute="top" id="viY-PC-SVB"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="emotion" destination="orc-0T-7k0" id="t0J-mU-f9w"/>
+                        <outlet property="textInShape" destination="PEJ-Bb-2Ym" id="5Br-4r-QnO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsy-Gd-YgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

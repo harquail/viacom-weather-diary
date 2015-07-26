@@ -8,12 +8,17 @@
 
 import UIKit
 
-class WritingViewController: UIViewController {
+class WritingViewController: UIViewController, UITextViewDelegate {
 
+    @IBOutlet var textInShape: TextInShape!
+    @IBOutlet var emotion: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        textInShape.delegate = self
         
         //TODO: get weather
+        //TODO: get location at some point
         //TODO: set shape based on weather
 
         // Do any additional setup after loading the view.

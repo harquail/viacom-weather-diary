@@ -11,5 +11,6 @@
 #import "Parse/PFAnalytics.h"
 #import "SKPolygraph/SKPolygraph.h"
 #import "ForecastIOWrapper/FIOAPI.h"
+#import "MBLocationManager/MBLocationManager.h"
 
 #endif

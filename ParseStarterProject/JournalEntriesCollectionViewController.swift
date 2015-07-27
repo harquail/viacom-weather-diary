@@ -19,6 +19,7 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
         let query = PFQuery(className: "savedStory")
         query.addDescendingOrder("createdAt")
         query.whereKey("userID", equalTo: PFUser.currentUser()!.objectId!)
+//        println(NSUUID().UUIDString)
         query.findObjectsInBackgroundWithBlock {(objects: [AnyObject]?, error: NSError?) -> Void in
             savedStories = objects as? [PFObject]
             self.collectionView?.reloadData()

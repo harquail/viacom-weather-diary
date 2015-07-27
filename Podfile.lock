@@ -1,0 +1,25 @@
+PODS:
+  - Bolts/Tasks (1.2.0)
+  - CZWeatherKit (2.2.0):
+    - PINCache (~> 2.0)
+  - MBLocationManager (0.2.0)
+  - Parse (1.7.5.3):
+    - Bolts/Tasks (>= 1.2.0)
+  - PINCache (2.0)
+  - SKPolygraph (1.0.0)
+
+DEPENDENCIES:
+  - CZWeatherKit
+  - MBLocationManager
+  - Parse
+  - SKPolygraph
+
+SPEC CHECKSUMS:
+  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  CZWeatherKit: d7707d997a2c7215741db9c3d4dcfba25a21f0ce
+  MBLocationManager: 5206090a32a24112495f5cf706cbf397043fd81d
+  Parse: 373adbb1ad2e34d383542c3b28f678c49ebe4881
+  PINCache: ca953ba93ce1edde056fdd99121ee65b295a08c9
+  SKPolygraph: bbb45dd7e6ad7c736724b2f2b44f370f50af79aa
+
+COCOAPODS: 0.37.2

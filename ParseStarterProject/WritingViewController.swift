@@ -23,7 +23,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         
         // no shape cutout while writing
         textInShape.shape = .Rectangle
-    
+        
         
         // observe keyboard show/hide
         textInShape.delegate = self
@@ -34,11 +34,11 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         textInShape.becomeFirstResponder()
         
         self.updateWeather()
-
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
-    
+        
         // save the object to parse
         let savedObject = PFObject(className: "savedStory")
         savedObject["text"] = textInShape.text
@@ -58,7 +58,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     //--------------------------------------
     // MARK: - UITextView Delegate Methods
     //--------------------------------------
-
+    
     /**
     When the text view ends editing, update the emotion
     :param: textView the text view
@@ -116,7 +116,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     :param: sentimentValue a signed float representing the sentiment of the text
     */
     private func updateEmotion(sentimentValue:Float){
-        if(sentimentValue < -5){
+        if(sentimentValue < -4){
             // crying face
             emotionValue = 0
         }
@@ -124,11 +124,11 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             // sad face
             emotionValue = 1
         }
-        else if(sentimentValue > 5){
+        else if(sentimentValue > 4){
             // very happy face
             emotionValue = 4
         }
-        else if(sentimentValue > 3){
+        else if(sentimentValue > 2){
             // happy face
             emotionValue = 3
         }
@@ -159,14 +159,12 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             request.key = kForecastAPIKey
             request.sendWithCompletion { (data, error) -> Void in
                 if let weather = data {
-                    println(weather.current.summary)
-                    println(self.weatherIsWet(weather.current.summary))
                     self.isRainy = self.weatherIsWet(weather.current.summary)
                     
+                    // set image based on weather at location
                     let imageName = self.isRainy ? "rainDropSmall" : "sunSmall"
-                   self.weatherImage.image = UIImage(named: imageName)
+                    self.weatherImage.image = UIImage(named: imageName)
                     
-                    // TODO: if wet, change image to rain — otherwise, stay sunny
                 }
             }
         }

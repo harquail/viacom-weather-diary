@@ -28,6 +28,7 @@ class SplashViewController: UIViewController {
         let node = arch.decodeObjectForKey(NSKeyedArchiveRootObjectKey) as! SKEmitterNode
         arch.finishDecoding()
         
+        
         //put the node at the top of the view
         node.position = CGPointMake(rainyView.frame.width/2, rainyView.frame.height)
         node.targetNode = rainyView.scene

@@ -21,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable storing and querying data from Local Datastore. 
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
+        
+//        var uuid = NSUUID().UUIDString
+//        PFUser.logInWithUsername(uuid, password: "password")
 
         // ****************************************************************************
         // Uncomment this line if you want to enable Crash Reporting
@@ -37,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ****************************************************************************
 
         PFUser.enableAutomaticUser()
+        PFUser.currentUser()?.saveEventually(nil)
+        
 
         let defaultACL = PFACL();
 

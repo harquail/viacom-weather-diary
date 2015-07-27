@@ -9,7 +9,7 @@
 import UIKit
 
 class WritingViewController: UIViewController, UITextViewDelegate {
-
+    
     @IBOutlet var textInShape: TextInShape!
     @IBOutlet var emotion: UIImageView!
     
@@ -17,20 +17,42 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         textInShape.delegate = self
         
+        
+        // observe keyboard show/hide
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
-        //TODO: get weather
-        //TODO: get location at some point
-        //TODO: set shape based on weather
-
-        // Do any additional setup after loading the view.
+        
+        // start in editing view
+        textInShape.becomeFirstResponder()
     }
-
     
+    override func viewWillDisappear(animated: Bool) {
+    
+        let savedObject = PFObject(className: "savedStory")
+        savedObject["text"] = textInShape.text
+        savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            println("Object has been saved.")
+        }
+    
+    }
+    
+    
+    // MARK: - UITextView Delegate Methods
+    
+    /**
+    When the text view ends editing, update the emotion
+    :param: textView the text view
+    */
     func textViewDidEndEditing(textView: UITextView) {
-
+        
+        let analysis = SKPolygraph.sharedInstance().analyseSentiment(textInShape.text)
+        self.updateEmotion(analysis)
     }
     
+    /**
+    Changes the textbox size on keyboard show so text is not hidden by keyboard
+    :param: notification a notification object
+    */
     func keyboardWillShow(notification:NSNotification){
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
             println("kb show")
@@ -40,16 +62,22 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    
+    /**
+    Restores textbox size to original size
+    :param: notification a notification object
+    */
     func keyboardWillHide(notification:NSNotification){
         self.textInShape.contentInset = UIEdgeInsets(top: textInShape.contentInset.top,left:0,bottom:0,right:0)
         self.textInShape.scrollIndicatorInsets = UIEdgeInsetsZero
     }
     
-    
+    /**
+    Detects "done" key presses and ends editing when button is pressed
+    :param: notification a notification object
+    */
     func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if (text == "\n"){
-                textView.endEditing(false)
+            textView.endEditing(false)
             textView.resignFirstResponder()
             return false
         }
@@ -57,25 +85,52 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             return true
         }
     }
-//    
-//    func textViewShouldEndEditing(textView: UITextView) -> Bool {
-//        return true
-//    }
     
+    // MARK: - Private Method
+    
+    /**
+    When the text view ends editing, update the emotion
+    :param: textView the text view
+    */
+    private func updateEmotion(sentimentValue:Float){
+        if(sentimentValue < -5){
+            // crying face
+            emotion.image = UIImage(named:"emotions0")
+        }
+        else if(sentimentValue < 0){
+            // sad face
+            emotion.image = UIImage(named:"emotions1")
+        }
+        else if(sentimentValue > 5){
+            // very happy face
+            emotion.image = UIImage(named:"emotions4")
+            
+        }
+        else if(sentimentValue > 3){
+            // happy face
+            emotion.image = UIImage(named:"emotions3")
+        }
+        else{
+            // neutral face
+            emotion.image = UIImage(named:"emotions2")
+            
+        }
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

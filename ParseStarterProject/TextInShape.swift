@@ -43,6 +43,23 @@ class TextInShape: UITextView {
         
     }
     
+    
+//    - (void)keyboardWillShow:(NSNotification *)notification
+//    {
+//    NSDictionary *info = [notification userInfo];
+//    CGSize kbSize = [info[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+//    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
+//    
+//    self.textView.contentInset = contentInsets;
+//    self.textView.scrollIndicatorInsets = contentInsets;
+//    }
+//    
+//    - (void)keyboardWillHide:(NSNotification *)aNotification
+//    {
+//    self.textView.contentInset = UIEdgeInsetsZero;
+//    self.textView.scrollIndicatorInsets = UIEdgeInsetsZero;
+//    }
+    
     /*
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

@@ -193,17 +193,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PEJ-Bb-2Ym" customClass="TextInShape" customModule="ParseStarterProject" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="1048"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" translatesAutoresizingMaskIntoConstraints="NO" id="PEJ-Bb-2Ym" customClass="TextInShape" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1048" id="ZJl-tj-XLL"/>
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
                             </textView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="orc-0T-7k0" userLabel="emotion">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emotions2.png" translatesAutoresizingMaskIntoConstraints="NO" id="orc-0T-7k0" userLabel="emotion">
                                 <rect key="frame" x="344" y="661" width="70" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="rCU-MC-bvD"/>
@@ -215,8 +215,11 @@
                         <constraints>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="leading" secondItem="zE5-LP-fRS" secondAttribute="leading" id="5Gp-le-Ibm"/>
                             <constraint firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="8v5-H4-C3Y"/>
+                            <constraint firstAttribute="width" secondItem="PEJ-Bb-2Ym" secondAttribute="width" id="PAr-aW-hqK"/>
+                            <constraint firstAttribute="height" secondItem="PEJ-Bb-2Ym" secondAttribute="height" id="X7T-6v-jSQ"/>
                             <constraint firstItem="orc-0T-7k0" firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="iyf-uN-poJ"/>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="top" secondItem="zE5-LP-fRS" secondAttribute="top" id="jcx-pZ-xQe"/>
+                            <constraint firstAttribute="centerX" secondItem="PEJ-Bb-2Ym" secondAttribute="centerX" id="ryV-T5-vme"/>
                             <constraint firstItem="orc-0T-7k0" firstAttribute="bottom" secondItem="57U-Eh-c9i" secondAttribute="top" id="viY-PC-SVB"/>
                         </constraints>
                     </view>
@@ -233,6 +236,7 @@
     </scenes>
     <resources>
         <image name="cloud.png" width="656" height="362"/>
+        <image name="emotions2.png" width="200" height="200"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="FYQ-to-LrH"/>

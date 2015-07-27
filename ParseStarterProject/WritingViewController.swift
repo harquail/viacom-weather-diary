@@ -12,6 +12,9 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var textInShape: TextInShape!
     @IBOutlet var emotion: UIImageView!
+    // start with neutral emotion
+    var emotionValue:Int = 2
+    var weatherDescription:String = "sunny"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +25,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
-        // start in editing view
+        // start in editing mode
         textInShape.becomeFirstResponder()
     }
     
@@ -30,8 +33,14 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     
         let savedObject = PFObject(className: "savedStory")
         savedObject["text"] = textInShape.text
+        savedObject["userID"] = PFUser.currentUser()?.objectId
+        savedObject["emotion"] = emotionValue
+        savedObject["weather"] = weatherDescription
+
+        println(textInShape.text)
         savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved.")
+            PFUser.currentUser()
         }
     
     }
@@ -95,26 +104,26 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     private func updateEmotion(sentimentValue:Float){
         if(sentimentValue < -5){
             // crying face
-            emotion.image = UIImage(named:"emotions0")
+            emotionValue = 0
         }
         else if(sentimentValue < 0){
             // sad face
-            emotion.image = UIImage(named:"emotions1")
+            emotionValue = 1
         }
         else if(sentimentValue > 5){
             // very happy face
-            emotion.image = UIImage(named:"emotions4")
-            
+            emotionValue = 4
         }
         else if(sentimentValue > 3){
             // happy face
-            emotion.image = UIImage(named:"emotions3")
+            emotionValue = 3
         }
         else{
             // neutral face
-            emotion.image = UIImage(named:"emotions2")
+            emotionValue = 2
             
         }
+        emotion.image = UIImage(named:"emotion\(emotionValue)")
         
     }
     override func didReceiveMemoryWarning() {

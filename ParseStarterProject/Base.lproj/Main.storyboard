@@ -164,6 +164,7 @@
                                 <connections>
                                     <outlet property="day" destination="IWf-m3-8kd" id="Jji-Fq-A4R"/>
                                     <outlet property="month" destination="iHd-ta-08g" id="rR5-BO-6Ca"/>
+                                    <segue destination="QS4-mg-nM8" kind="show" id="DW3-bJ-fsU"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -173,9 +174,6 @@
                         </connections>
                     </collectionView>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <connections>
-                        <segue destination="ra9-aA-m3o" kind="show" identifier="segueToWriteView" id="FYQ-to-LrH"/>
-                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2TI-7V-2g5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,14 +225,57 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsy-Gd-YgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520" y="1460"/>
+            <point key="canvasLocation" x="296" y="1284"/>
+        </scene>
+        <!--Reading View Controller-->
+        <scene sceneID="avZ-CZ-zAz">
+            <objects>
+                <viewController id="QS4-mg-nM8" customClass="ReadingViewController" customModule="ParseStarterProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dZi-ug-edH"/>
+                        <viewControllerLayoutGuide type="bottom" id="4zd-VF-Gk6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vRq-zA-36n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Drh-k3-2eQ" customClass="TextInShape" customModule="ParseStarterProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" keyboardAppearance="alert" returnKeyType="done"/>
+                            </textView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emotions2.png" translatesAutoresizingMaskIntoConstraints="NO" id="cn5-ls-Ds8" userLabel="emotion">
+                                <rect key="frame" x="344" y="661" width="70" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Zvc-6X-aTd"/>
+                                    <constraint firstAttribute="height" constant="75" id="yB7-GQ-S5D"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Drh-k3-2eQ" firstAttribute="trailing" secondItem="cn5-ls-Ds8" secondAttribute="trailing" id="M01-Jd-OzX"/>
+                            <constraint firstAttribute="trailing" secondItem="cn5-ls-Ds8" secondAttribute="trailing" id="PMW-gq-ZFM"/>
+                            <constraint firstItem="Drh-k3-2eQ" firstAttribute="leading" secondItem="vRq-zA-36n" secondAttribute="leading" id="hW3-7K-nle"/>
+                            <constraint firstItem="cn5-ls-Ds8" firstAttribute="bottom" secondItem="4zd-VF-Gk6" secondAttribute="top" id="jkR-rY-lVI"/>
+                            <constraint firstItem="Drh-k3-2eQ" firstAttribute="top" secondItem="vRq-zA-36n" secondAttribute="top" id="ps6-dQ-G9T"/>
+                            <constraint firstItem="Drh-k3-2eQ" firstAttribute="bottom" secondItem="4zd-VF-Gk6" secondAttribute="top" id="v33-dv-hgs"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="emotion" destination="cn5-ls-Ds8" id="LPf-pj-lRd"/>
+                        <outlet property="textInShape" destination="Drh-k3-2eQ" id="dwL-gk-Pop"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="S5o-pL-92t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="831" y="1284"/>
         </scene>
     </scenes>
     <resources>
         <image name="cloud.png" width="656" height="362"/>
         <image name="emotions2.png" width="200" height="200"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="FYQ-to-LrH"/>
-    </inferredMetricsTieBreakers>
 </document>

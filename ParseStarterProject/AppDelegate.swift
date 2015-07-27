@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //
         // Uncomment and fill in with your Parse credentials:
          Parse.setApplicationId(kParseApplicationID, clientKey: kParseClientKey)
+        
         //
         // If you are using Facebook, uncomment and add your FacebookAppID to your bundle's plist as
         // described here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/
@@ -68,9 +69,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let types = UIRemoteNotificationType.Badge | UIRemoteNotificationType.Alert | UIRemoteNotificationType.Sound
             application.registerForRemoteNotificationTypes(types)
         }
-
+        
+        
+        // Get location
+        MBLocationManager.sharedManager().startLocationUpdates(kMBLocationManagerModeStandardWhenInUse, distanceFilter: kCLDistanceFilterNone, accuracy: kCLLocationAccuracyThreeKilometers)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeLocation:"), name: "MBLocationManagerNotificationLocationUpdated", object: nil)
+        
+        
         return true
     }
+    
+    //--------------------------------------
+    // MARK: Notification of Location Change
+    //--------------------------------------
+    
+    // set current location & stop updating location to save battery
+    func changeLocation(notification:NSNotification){
+        currentLocation = MBLocationManager.sharedManager().currentLocation
+        MBLocationManager.sharedManager().stopLocationUpdates()
+    }
+    
 
     //--------------------------------------
     // MARK: Push Notifications

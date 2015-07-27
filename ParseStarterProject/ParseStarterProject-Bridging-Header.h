@@ -10,7 +10,7 @@
 #import "Parse/Parse.h"
 #import "Parse/PFAnalytics.h"
 #import "SKPolygraph/SKPolygraph.h"
-#import "ForecastIOWrapper/FIOAPI.h"
+#import "CZWeatherKit/CZWeatherKit.h"
 #import "MBLocationManager/MBLocationManager.h"
 
 #endif

@@ -19,6 +19,19 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         textInShape.delegate = self
+        textInShape.shape = .Rectangle
+        
+        
+        self.getForecast()
+        
+        
+        
+        
+        
+        //        let forecastr =
+        
+        //        appDelegate.currentLocation
+        //        FIOAPI.requestWeatherForLocation()
         
         
         // observe keyboard show/hide
@@ -29,21 +42,47 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         textInShape.becomeFirstResponder()
     }
     
-    override func viewWillDisappear(animated: Bool) {
     
+    private func getForecast(){
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let request = CZForecastioRequest.newForecastRequest()
+        if let location = appDelegate.currentLocation{
+            request.location = CZWeatherLocation(fromLocation: location)
+            request.key = kForecastAPIKey
+            request.sendWithCompletion { (data, error) -> Void in
+                if let weather = data {
+                    println(weather.current.summary)
+                    println(self.isWetWeather(weather.current.summary))
+                }
+            }
+        }
+    }
+    
+    
+    private func isWetWeather(description:String) -> Bool{
+        
+        let drizzle = description.lowercaseString.rangeOfString("drizzle")
+        let rain = description.lowercaseString.rangeOfString("rain")
+        
+        return drizzle != nil || rain != nil
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
         let savedObject = PFObject(className: "savedStory")
         savedObject["text"] = textInShape.text
         savedObject["userID"] = PFUser.currentUser()?.objectId
         savedObject["emotion"] = emotionValue
         savedObject["weather"] = weatherDescription
-
+        
         println(textInShape.text)
         savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved.")
             PFUser.currentUser()
         }
-    
+        
     }
+    
     
     
     // MARK: - UITextView Delegate Methods
@@ -98,8 +137,8 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     // MARK: - Private Method
     
     /**
-    When the text view ends editing, update the emotion
-    :param: textView the text view
+    Update the emotion image
+    :param: sentimentValue a signed float representing the sentiment of the text
     */
     private func updateEmotion(sentimentValue:Float){
         if(sentimentValue < -5){

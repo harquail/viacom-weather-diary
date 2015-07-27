@@ -12,6 +12,7 @@ class JournalEntryCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var day: UILabel!
     @IBOutlet var month: UILabel!
+    @IBOutlet var previewText: UITextView!
     
     override func layoutSubviews() {
         //rotate month label

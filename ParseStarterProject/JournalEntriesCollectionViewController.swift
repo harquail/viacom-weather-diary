@@ -72,6 +72,11 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
             
             // keep track of cell position via tag
             cell.tag = indexPath.row
+            cell.previewText.text = cellData!["text"] as! String
+//            
+//            let weatherView = UIImageView(frame: cell.contentView.frame)
+//            weatherView.image = UIImage(named: "rainDropSmall")
+//            cell.contentView.addSubview(weatherView)
         }
         
         return cell

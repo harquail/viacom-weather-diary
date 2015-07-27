@@ -20,9 +20,10 @@ class TextInShape: UITextView {
     
     override func layoutSubviews() {
         if let s = shape {
-            //rectangle don't need exlusion paths
+            //rectangles don't need exlusion paths
             if s != .Rectangle{
                 let exclusionPath = pathForShape(s)
+                
                 let rectClip = UIBezierPath(rect: self.frame)
                 exclusionPath.appendPath(rectClip)
                 exclusionPath.usesEvenOddFillRule = true
@@ -32,7 +33,6 @@ class TextInShape: UITextView {
     }
     
     private func pathForShape(s:ShapeType) -> UIBezierPath{
-        
         switch(s.rawValue){
         case "sunny":
             return sunShape()
@@ -42,41 +42,25 @@ class TextInShape: UITextView {
         
     }
     
-    
+    // makes a raindrop-shaped path
+    // TODO: this is very hacky
     private func rainDropShape() -> UIBezierPath{
-        
-        return UIBezierPath()
-        
+        let frm = self.frame
+        let xCenter = frm.width/2
+        var path = UIBezierPath()
+        //draw two curves, composing the raindrop
+        path.moveToPoint(CGPointMake(xCenter,0))
+        path.addCurveToPoint(CGPointMake(xCenter, frm.width), controlPoint1: CGPointMake(xCenter, 30) , controlPoint2: CGPointMake(frm.width, frm.width-50))
+        path.addCurveToPoint(CGPointMake(xCenter, 0), controlPoint1: CGPointMake(0, frm.width-50) , controlPoint2: CGPointMake(xCenter, 30))
+        //scale the path to fit well
+        path.applyTransform(CGAffineTransformScale(CGAffineTransformIdentity, 1.5, 1.5))
+        path.applyTransform(CGAffineTransformMakeTranslation(-frm.width/4, 0))
+        return path
     }
     
     private func sunShape() -> UIBezierPath{
         
-        return UIBezierPath(ovalInRect: self.frame).bezierPathByReversingPath()
+        return UIBezierPath(ovalInRect: CGRectMake(0, 0, self.frame.width, self.frame.width)).bezierPathByReversingPath()
     }
-    
-    
-    //    - (void)keyboardWillShow:(NSNotification *)notification
-    //    {
-    //    NSDictionary *info = [notification userInfo];
-    //    CGSize kbSize = [info[UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    //    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, kbSize.height, 0.0);
-    //
-    //    self.textView.contentInset = contentInsets;
-    //    self.textView.scrollIndicatorInsets = contentInsets;
-    //    }
-    //
-    //    - (void)keyboardWillHide:(NSNotification *)aNotification
-    //    {
-    //    self.textView.contentInset = UIEdgeInsetsZero;
-    //    self.textView.scrollIndicatorInsets = UIEdgeInsetsZero;
-    //    }
-    
-    /*
-    // Only override drawRect: if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func drawRect(rect: CGRect) {
-    // Drawing code
-    }
-    */
     
 }

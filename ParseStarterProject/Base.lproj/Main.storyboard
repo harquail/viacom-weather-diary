@@ -157,6 +157,13 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWD-1B-i49">
+                                            <rect key="frame" x="35" y="0.0" width="65" height="100"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                            <fontDescription key="fontDescription" type="system" pointSize="7"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        </textView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -164,6 +171,7 @@
                                 <connections>
                                     <outlet property="day" destination="IWf-m3-8kd" id="Jji-Fq-A4R"/>
                                     <outlet property="month" destination="iHd-ta-08g" id="rR5-BO-6Ca"/>
+                                    <outlet property="previewText" destination="aWD-1B-i49" id="aHC-ds-aXQ"/>
                                     <segue destination="QS4-mg-nM8" kind="show" id="DW3-bJ-fsU"/>
                                 </connections>
                             </collectionViewCell>
@@ -204,12 +212,21 @@
                                     <constraint firstAttribute="width" constant="70" id="t5S-az-NBC"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainDropSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="UbA-HQ-hSt" userLabel="weather">
+                                <rect key="frame" x="0.0" y="661" width="70" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Ukg-Ix-id4"/>
+                                    <constraint firstAttribute="height" constant="75" id="vL2-Dj-lSq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="leading" secondItem="zE5-LP-fRS" secondAttribute="leading" id="5Gp-le-Ibm"/>
                             <constraint firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="8v5-H4-C3Y"/>
+                            <constraint firstItem="UbA-HQ-hSt" firstAttribute="leading" secondItem="PEJ-Bb-2Ym" secondAttribute="leading" id="MrF-Te-RqV"/>
                             <constraint firstAttribute="width" secondItem="PEJ-Bb-2Ym" secondAttribute="width" id="PAr-aW-hqK"/>
+                            <constraint firstItem="UbA-HQ-hSt" firstAttribute="top" secondItem="orc-0T-7k0" secondAttribute="top" id="UmX-qV-3EW"/>
                             <constraint firstAttribute="height" secondItem="PEJ-Bb-2Ym" secondAttribute="height" id="X7T-6v-jSQ"/>
                             <constraint firstItem="orc-0T-7k0" firstAttribute="trailing" secondItem="PEJ-Bb-2Ym" secondAttribute="trailing" id="iyf-uN-poJ"/>
                             <constraint firstItem="PEJ-Bb-2Ym" firstAttribute="top" secondItem="zE5-LP-fRS" secondAttribute="top" id="jcx-pZ-xQe"/>
@@ -252,11 +269,20 @@
                                     <constraint firstAttribute="height" constant="75" id="yB7-GQ-S5D"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainDropSmall.png" translatesAutoresizingMaskIntoConstraints="NO" id="IKM-HF-q2b" userLabel="weather">
+                                <rect key="frame" x="0.0" y="661" width="70" height="75"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="8i0-XR-q0e"/>
+                                    <constraint firstAttribute="height" constant="75" id="Rt7-xz-Dna"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Drh-k3-2eQ" firstAttribute="trailing" secondItem="cn5-ls-Ds8" secondAttribute="trailing" id="M01-Jd-OzX"/>
                             <constraint firstAttribute="trailing" secondItem="cn5-ls-Ds8" secondAttribute="trailing" id="PMW-gq-ZFM"/>
+                            <constraint firstItem="IKM-HF-q2b" firstAttribute="top" secondItem="cn5-ls-Ds8" secondAttribute="top" id="fAr-es-Nts"/>
+                            <constraint firstItem="IKM-HF-q2b" firstAttribute="leading" secondItem="Drh-k3-2eQ" secondAttribute="leading" id="fjL-EL-NOZ"/>
                             <constraint firstItem="Drh-k3-2eQ" firstAttribute="leading" secondItem="vRq-zA-36n" secondAttribute="leading" id="hW3-7K-nle"/>
                             <constraint firstItem="cn5-ls-Ds8" firstAttribute="bottom" secondItem="4zd-VF-Gk6" secondAttribute="top" id="jkR-rY-lVI"/>
                             <constraint firstItem="Drh-k3-2eQ" firstAttribute="top" secondItem="vRq-zA-36n" secondAttribute="top" id="ps6-dQ-G9T"/>
@@ -277,5 +303,6 @@
     <resources>
         <image name="cloud.png" width="656" height="362"/>
         <image name="emotions2.png" width="200" height="200"/>
+        <image name="rainDropSmall.png" width="100" height="100"/>
     </resources>
 </document>

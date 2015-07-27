@@ -10,6 +10,7 @@ import UIKit
 
 class TextInShape: UITextView {
     
+    //
     enum ShapeType:String{
         case Rectangle = ""
         case Circle = "sunny"
@@ -32,6 +33,10 @@ class TextInShape: UITextView {
             }
         }
     }
+    
+    //--------------------------------------
+    // MARK: - Private Methods
+    //--------------------------------------
     
     // returns the path for a ShapeType
     private func pathForShape(s:ShapeType) -> UIBezierPath{

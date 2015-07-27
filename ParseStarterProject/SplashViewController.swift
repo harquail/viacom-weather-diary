@@ -13,6 +13,10 @@ class SplashViewController: UIViewController {
     @IBOutlet var readButton: SFlatButton!
     @IBOutlet var rainyView: SKView!
     
+    //--------------------------------------
+    // MARK: - Lifecycle Methods
+    //--------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -51,14 +55,12 @@ class SplashViewController: UIViewController {
         super.viewWillDisappear(animated)
     }
     
+    //--------------------------------------
+    // MARK: - View Controller
+    //--------------------------------------
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }
 

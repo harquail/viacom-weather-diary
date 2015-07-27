@@ -46,7 +46,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         savedObject["emotion"] = emotionValue
         savedObject["rainy"] = isRainy
         
-        println(textInShape.text)
+        println(savedObject)
         savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             println("Object has been saved.")
             PFUser.currentUser()
@@ -165,6 +165,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
                     let imageName = self.isRainy ? "rainDropSmall" : "sunSmall"
                     self.weatherImage.image = UIImage(named: imageName)
                     
+                    println(imageName)
                 }
             }
         }

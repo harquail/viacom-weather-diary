@@ -16,7 +16,6 @@
 		81BA817B1A49E0E500E65899 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817A1A49E0E500E65899 /* SystemConfiguration.framework */; };
 		81BA817F1A49E0F000E65899 /* libstdc++.6.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */; };
 		D9E6A8632D8F01EEA626AF8D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E46BC0199E4374B262D3507D /* libPods.a */; };
-		F140B76E1B658D40008FA5F6 /* APIKeysAndSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F140B76D1B658D40008FA5F6 /* APIKeysAndSecrets.swift */; };
 		F140B7751B65A012008FA5F6 /* emotions4.png in Resources */ = {isa = PBXBuildFile; fileRef = F140B7701B65A012008FA5F6 /* emotions4.png */; };
 		F140B7761B65A012008FA5F6 /* emotions3.png in Resources */ = {isa = PBXBuildFile; fileRef = F140B7711B65A012008FA5F6 /* emotions3.png */; };
 		F140B7771B65A012008FA5F6 /* emotions2.png in Resources */ = {isa = PBXBuildFile; fileRef = F140B7721B65A012008FA5F6 /* emotions2.png */; };
@@ -36,6 +35,7 @@
 		F17F6E411B649DB5001EDFCF /* JournalEntriesCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17F6E401B649DB5001EDFCF /* JournalEntriesCollectionViewController.swift */; };
 		F17F6E431B655C0A001EDFCF /* cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = F17F6E421B655C0A001EDFCF /* cloud.png */; };
 		F17F6E461B6562A9001EDFCF /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17F6E451B6562A9001EDFCF /* SpriteKit.framework */; };
+		F185D9991B66EAE500D67120 /* APIKeysAndSecrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F185D9981B66EAE500D67120 /* APIKeysAndSecrets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +52,6 @@
 		81BA817E1A49E0F000E65899 /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		81BA81821A49E27F00E65899 /* ParseStarterProject-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ParseStarterProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		E46BC0199E4374B262D3507D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F140B76D1B658D40008FA5F6 /* APIKeysAndSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeysAndSecrets.swift; sourceTree = "<group>"; };
 		F140B7701B65A012008FA5F6 /* emotions4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emotions4.png; sourceTree = "<group>"; };
 		F140B7711B65A012008FA5F6 /* emotions3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emotions3.png; sourceTree = "<group>"; };
 		F140B7721B65A012008FA5F6 /* emotions2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = emotions2.png; sourceTree = "<group>"; };
@@ -73,6 +72,7 @@
 		F17F6E401B649DB5001EDFCF /* JournalEntriesCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JournalEntriesCollectionViewController.swift; sourceTree = "<group>"; };
 		F17F6E421B655C0A001EDFCF /* cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud.png; sourceTree = "<group>"; };
 		F17F6E451B6562A9001EDFCF /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		F185D9981B66EAE500D67120 /* APIKeysAndSecrets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIKeysAndSecrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,7 +122,7 @@
 		81BA81471A49DA1800E65899 /* ParseStarterProject */ = {
 			isa = PBXGroup;
 			children = (
-				F140B76D1B658D40008FA5F6 /* APIKeysAndSecrets.swift */,
+				F185D9981B66EAE500D67120 /* APIKeysAndSecrets.swift */,
 				81BA814A1A49DA1800E65899 /* AppDelegate.swift */,
 				81BA814C1A49DA1800E65899 /* SplashViewController.swift */,
 				81BA814E1A49DA1800E65899 /* Main.storyboard */,
@@ -347,10 +347,10 @@
 				F168BAA91B65762A003C3001 /* WritingViewController.swift in Sources */,
 				81BA814B1A49DA1800E65899 /* AppDelegate.swift in Sources */,
 				F17F6E3C1B648623001EDFCF /* SFlatButton.swift in Sources */,
-				F140B76E1B658D40008FA5F6 /* APIKeysAndSecrets.swift in Sources */,
 				F140B77B1B65DD3F008FA5F6 /* ReadingViewController.swift in Sources */,
 				F17F6E411B649DB5001EDFCF /* JournalEntriesCollectionViewController.swift in Sources */,
 				F168BAAB1B6579DA003C3001 /* JournalEntryCollectionViewCell.swift in Sources */,
+				F185D9991B66EAE500D67120 /* APIKeysAndSecrets.swift in Sources */,
 				F17F6E3A1B648329001EDFCF /* TextInShape.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

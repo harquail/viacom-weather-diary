@@ -9,6 +9,7 @@
 import UIKit
 
 class ReadingViewController: UIViewController {
+    
     @IBOutlet var textInShape: TextInShape!
     @IBOutlet var emotion: UIImageView!
     @IBOutlet var weatherImage: UIImageView!
@@ -25,7 +26,6 @@ class ReadingViewController: UIViewController {
         let imageName = self.isRainy ? "rainDropSmall" : "sunSmall"
         
         textInShape.shape = self.isRainy ? .Droplet : .Circle
-
         weatherImage.image = UIImage(named:imageName)
     }
 }

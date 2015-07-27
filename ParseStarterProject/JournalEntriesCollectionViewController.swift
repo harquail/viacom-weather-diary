@@ -27,7 +27,9 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
         
     }
     
+    //--------------------------------------
     // MARK: UICollectionViewDataSource
+    //--------------------------------------
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         //#warning Incomplete method implementation -- Return the number of sections
@@ -62,8 +64,9 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
         
         return cell
     }
-    
+    //--------------------------------------
     // MARK: - Navigation
+    //--------------------------------------
 
     // set variables in destination reading view controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

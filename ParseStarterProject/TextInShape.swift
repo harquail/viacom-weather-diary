@@ -15,15 +15,16 @@ class TextInShape: UITextView {
         case Circle = "sunny"
         case Droplet = "rainy"
     }
-    
     var shape:ShapeType?
     
+    //when laying out subviews, force text inside of a shape
     override func layoutSubviews() {
         if let s = shape {
             //rectangles don't need exlusion paths
             if s != .Rectangle{
                 let exclusionPath = pathForShape(s)
                 
+                // add frame rectangle to path to invert path (so text is inside, not outside the shape)
                 let rectClip = UIBezierPath(rect: self.frame)
                 exclusionPath.appendPath(rectClip)
                 exclusionPath.usesEvenOddFillRule = true
@@ -32,6 +33,7 @@ class TextInShape: UITextView {
         }
     }
     
+    // returns the path for a ShapeType
     private func pathForShape(s:ShapeType) -> UIBezierPath{
         switch(s.rawValue){
         case "sunny":
@@ -58,8 +60,9 @@ class TextInShape: UITextView {
         return path
     }
     
+    // makes a sun-shaped path
     private func sunShape() -> UIBezierPath{
-        
+        // suns are circles, lol
         return UIBezierPath(ovalInRect: CGRectMake(0, 0, self.frame.width, self.frame.width)).bezierPathByReversingPath()
     }
     

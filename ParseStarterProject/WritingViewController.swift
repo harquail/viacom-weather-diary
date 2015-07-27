@@ -12,68 +12,39 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var textInShape: TextInShape!
     @IBOutlet var emotion: UIImageView!
+    @IBOutlet var weatherImage: UIImageView!
+    
     // start with neutral emotion
     var emotionValue:Int = 2
-    var weatherDescription:String = "sunny"
+    var isRainy:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textInShape.delegate = self
+        
+        // no shape cutout while writing
         textInShape.shape = .Rectangle
-        
-        
-        self.getForecast()
-        
-        
-        
-        
-        
-        //        let forecastr =
-        
-        //        appDelegate.currentLocation
-        //        FIOAPI.requestWeatherForLocation()
-        
+    
         
         // observe keyboard show/hide
+        textInShape.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillShow:"), name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardWillHide:"), name: UIKeyboardWillHideNotification, object: nil)
         
         // start in editing mode
         textInShape.becomeFirstResponder()
-    }
-    
-    
-    private func getForecast(){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let request = CZForecastioRequest.newForecastRequest()
-        if let location = appDelegate.currentLocation{
-            request.location = CZWeatherLocation(fromLocation: location)
-            request.key = kForecastAPIKey
-            request.sendWithCompletion { (data, error) -> Void in
-                if let weather = data {
-                    println(weather.current.summary)
-                    println(self.isWetWeather(weather.current.summary))
-                }
-            }
-        }
-    }
-    
-    
-    private func isWetWeather(description:String) -> Bool{
         
-        let drizzle = description.lowercaseString.rangeOfString("drizzle")
-        let rain = description.lowercaseString.rangeOfString("rain")
-        
-        return drizzle != nil || rain != nil
+        self.updateWeather()
+
     }
     
     override func viewWillDisappear(animated: Bool) {
-        
+    
+        // save the object to parse
         let savedObject = PFObject(className: "savedStory")
         savedObject["text"] = textInShape.text
         savedObject["userID"] = PFUser.currentUser()?.objectId
         savedObject["emotion"] = emotionValue
-        savedObject["weather"] = weatherDescription
+        savedObject["rainy"] = isRainy
         
         println(textInShape.text)
         savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
@@ -84,9 +55,10 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    
+    //--------------------------------------
     // MARK: - UITextView Delegate Methods
-    
+    //--------------------------------------
+
     /**
     When the text view ends editing, update the emotion
     :param: textView the text view
@@ -95,6 +67,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         
         let analysis = SKPolygraph.sharedInstance().analyseSentiment(textInShape.text)
         self.updateEmotion(analysis)
+        println(analysis)
     }
     
     /**
@@ -134,7 +107,9 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    // MARK: - Private Method
+    //--------------------------------------
+    // MARK: - Private Methods
+    //--------------------------------------
     
     /**
     Update the emotion image
@@ -162,7 +137,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             emotionValue = 2
             
         }
-        emotion.image = UIImage(named:"emotion\(emotionValue)")
+        emotion.image = UIImage(named:"emotions\(emotionValue)")
         
     }
     override func didReceiveMemoryWarning() {
@@ -170,15 +145,46 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
+    /**
+    Update the weather conditions
     */
+    private func updateWeather(){
+        
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        // API Request to Forecast.io
+        let request = CZForecastioRequest.newForecastRequest()
+        if let location = appDelegate.currentLocation{
+            request.location = CZWeatherLocation(fromLocation: location)
+            request.key = kForecastAPIKey
+            request.sendWithCompletion { (data, error) -> Void in
+                if let weather = data {
+                    println(weather.current.summary)
+                    println(self.weatherIsWet(weather.current.summary))
+                    self.isRainy = self.weatherIsWet(weather.current.summary)
+                    
+                    let imageName = self.isRainy ? "rainDropSmall" : "sunSmall"
+                   self.weatherImage.image = UIImage(named: imageName)
+                    
+                    // TODO: if wet, change image to rain — otherwise, stay sunny
+                }
+            }
+        }
+    }
+    
+    /**
+    Determines whether a string represents wet weather
+    :param: description a string representing the weather condition
+    :returns: true if the description contains "rain" or "drizzle", otherwise false
+    */
+    private func weatherIsWet(description:String) -> Bool{
+        
+        let drizzle = description.lowercaseString.rangeOfString("drizzle")
+        let rain = description.lowercaseString.rangeOfString("rain")
+        
+        return drizzle != nil || rain != nil
+    }
+    
+    
     
 }

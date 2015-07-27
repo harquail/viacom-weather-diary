@@ -74,8 +74,8 @@
                                     <segue destination="ra9-aA-m3o" kind="show" id="St8-d5-Hcl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rainy Day Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-SN-VR3">
-                                <rect key="frame" x="-121" y="235" width="656" height="47"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rainy Day Diary" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmO-SN-VR3">
+                                <rect key="frame" x="-121" y="270" width="656" height="47"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="39"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -238,6 +238,7 @@
                     <connections>
                         <outlet property="emotion" destination="orc-0T-7k0" id="t0J-mU-f9w"/>
                         <outlet property="textInShape" destination="PEJ-Bb-2Ym" id="5Br-4r-QnO"/>
+                        <outlet property="weatherImage" destination="UbA-HQ-hSt" id="Zij-Ca-UsL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nsy-Gd-YgZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -293,6 +294,7 @@
                     <connections>
                         <outlet property="emotion" destination="cn5-ls-Ds8" id="LPf-pj-lRd"/>
                         <outlet property="textInShape" destination="Drh-k3-2eQ" id="dwL-gk-Pop"/>
+                        <outlet property="weatherImage" destination="IKM-HF-q2b" id="MSM-hb-6iw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S5o-pL-92t" userLabel="First Responder" sceneMemberID="firstResponder"/>

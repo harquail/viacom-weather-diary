@@ -15,7 +15,7 @@ class JournalEntryCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewText: UITextView!
     
     override func layoutSubviews() {
-        //rotate month label
+        //rotate month label 90º
         month.transform = CGAffineTransformMakeRotation(CGFloat(-M_PI / 2.0))
     }
 }

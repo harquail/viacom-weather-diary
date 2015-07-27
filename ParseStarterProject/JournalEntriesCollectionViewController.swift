@@ -15,7 +15,6 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // fetch stories for user from parse
         let query = PFQuery(className: "savedStory")
         query.addDescendingOrder("createdAt")
@@ -26,21 +25,6 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
         }
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    }
-    */
     
     // MARK: UICollectionViewDataSource
     
@@ -58,11 +42,11 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! JournalEntryCollectionViewCell
         
+        // restore cells from parse data
         let cellData:PFObject?
         if(savedStories != nil && savedStories?.count > indexPath.row){
             
             cellData = savedStories![indexPath.row]
-            
             // change date of cells
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "d"
@@ -73,55 +57,19 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
             // keep track of cell position via tag
             cell.tag = indexPath.row
             cell.previewText.text = cellData!["text"] as! String
-//            
-//            let weatherView = UIImageView(frame: cell.contentView.frame)
-//            weatherView.image = UIImage(named: "rainDropSmall")
-//            cell.contentView.addSubview(weatherView)
         }
         
         return cell
     }
     
-    
+    // MARK: - Navigation
+
     // set variables in destination reading view controller
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destination = segue.destinationViewController as! ReadingViewController
         let parseObjectForCell = savedStories?[(sender as! UICollectionViewCell).tag]
         destination.text = parseObjectForCell?["text"] as? String ?? ""
         destination.emotionValue = parseObjectForCell?["emotion"] as? Int ?? 2
-        destination.weatherDescription = parseObjectForCell?["weather"] as? String ?? "sunny"
-        
+        destination.isRainy = parseObjectForCell?["rainy"] as? Bool ?? false
     }
-    
-    // MARK: UICollectionViewDelegate
-    
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-    }
-    */
-    
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-    }
-    */
-    
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return false
-    }
-    
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-    return false
-    }
-    
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
-    }
-    */
-    
 }

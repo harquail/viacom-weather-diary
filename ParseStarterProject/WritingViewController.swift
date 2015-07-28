@@ -121,7 +121,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             // sad face
             emotionValue = 1
         }
-        else if(sentimentValue > 2  && sentimentValue <= 4){
+        else if(sentimentValue > 2){
             // happy face
             emotionValue = 3
         }

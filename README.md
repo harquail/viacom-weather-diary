@@ -17,3 +17,6 @@ This was a challenge for an interview — inspired by Viacom Labs
 #functionality
 
 The icon in the bottom left shows the weather when the text was created — currently either a raindrop for rainy or a sun for sunny, based on information from Forecast.io.  The icon in the bottom right shows an emoticon based on analysis of the positive or negative sentiment of the text.  Additionally, in the read view, the text is formatted to fill a shape based on the weather during writing — a circle for sunny or a raindrop shape for rainy.
+
+![](https://github.com/harquail/viacom-weather-diary/blob/master/screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2027%2C%202015%2C%209.13.05%20PM.png)
+![](https://github.com/harquail/viacom-weather-diary/blob/master/screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2027%2C%202015%2C%209.13.16%20PM.png)

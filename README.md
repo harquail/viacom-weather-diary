@@ -23,3 +23,5 @@ The icon in the bottom left shows the weather when the text was created — cur
 <img src="https://github.com/harquail/viacom-weather-diary/blob/master/screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2027%2C%202015%2C%207.11.00%20PM.png" width="250"></img>
 <img src="https://github.com/harquail/viacom-weather-diary/blob/master/screenshots/iOS%20Simulator%20Screen%20Shot%20Jul%2027%2C%202015%2C%207.10.54%20PM.png" width="250"></img>
 
+Video Demo:
+[https://www.youtube.com/watch?v=rnf8SOBpKSo](https://www.youtube.com/watch?v=rnf8SOBpKSo)

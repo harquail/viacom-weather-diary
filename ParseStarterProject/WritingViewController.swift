@@ -46,9 +46,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
         savedObject["emotion"] = emotionValue
         savedObject["rainy"] = isRainy
         
-        println(savedObject)
         savedObject.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            println("Object has been saved.")
             PFUser.currentUser()
         }
         
@@ -66,8 +64,7 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     func textViewDidEndEditing(textView: UITextView) {
         
         let analysis = SKPolygraph.sharedInstance().analyseSentiment(textInShape.text)
-        self.updateEmotion(analysis)
-        println(analysis)
+        self.updateEmotion(Int(analysis))
     }
     
     /**
@@ -76,7 +73,6 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     */
     func keyboardWillShow(notification:NSNotification){
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
-            println("kb show")
             let contentInsets = UIEdgeInsets(top: textInShape.contentInset.top, left: 0, bottom: keyboardSize.height, right: 0)
             self.textInShape.contentInset = contentInsets
             self.textInShape.scrollIndicatorInsets = contentInsets
@@ -115,7 +111,8 @@ class WritingViewController: UIViewController, UITextViewDelegate {
     Update the emotion image
     :param: sentimentValue a signed float representing the sentiment of the text
     */
-    private func updateEmotion(sentimentValue:Float){
+    private func updateEmotion(sentimentValue:Int){
+        
         if(sentimentValue < -4){
             // crying face
             emotionValue = 0
@@ -124,13 +121,13 @@ class WritingViewController: UIViewController, UITextViewDelegate {
             // sad face
             emotionValue = 1
         }
+        else if(sentimentValue > 2  && sentimentValue <= 4){
+            // happy face
+            emotionValue = 3
+        }
         else if(sentimentValue > 4){
             // very happy face
             emotionValue = 4
-        }
-        else if(sentimentValue > 2){
-            // happy face
-            emotionValue = 3
         }
         else{
             // neutral face
@@ -165,7 +162,6 @@ class WritingViewController: UIViewController, UITextViewDelegate {
                     let imageName = self.isRainy ? "rainDropSmall" : "sunSmall"
                     self.weatherImage.image = UIImage(named: imageName)
                     
-                    println(imageName)
                 }
             }
         }

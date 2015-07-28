@@ -19,7 +19,6 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
         let query = PFQuery(className: "savedStory")
         query.addDescendingOrder("createdAt")
         query.whereKey("userID", equalTo: PFUser.currentUser()!.objectId!)
-//        println(NSUUID().UUIDString)
         query.findObjectsInBackgroundWithBlock {(objects: [AnyObject]?, error: NSError?) -> Void in
             savedStories = objects as? [PFObject]
             self.collectionView?.reloadData()
@@ -32,13 +31,10 @@ class JournalEntriesCollectionViewController: UICollectionViewController {
     //--------------------------------------
     
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        //#warning Incomplete method implementation -- Return the number of sections
         return 1
     }
     
-    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        println(savedStories?.count)
         return savedStories?.count ?? 0
     }
     

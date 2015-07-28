@@ -9,7 +9,7 @@ import UIKit
 
 class TextInShape: UITextView {
     
-    // 
+    // type of shape for weather string
     enum ShapeType:String{
         case Rectangle = ""
         case Circle = "sunny"
@@ -40,6 +40,10 @@ class TextInShape: UITextView {
     // MARK: - Private Methods
     //--------------------------------------
     
+    /**
+    Draws a shape on the background of the textview in light gray — slightly larger than the bounds of the shape
+    :param: s the shape type to draw on background
+    */
     private func drawPathForShapeOnBackground(s:ShapeType){
         let path = pathForShape(s)
         // scale path up slightly

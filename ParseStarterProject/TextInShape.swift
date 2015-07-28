@@ -3,14 +3,13 @@
 //  ParseStarterProject
 //
 //  Created by nook on 7/25/15.
-//  Copyright (c) 2015 Parse. All rights reserved.
 //
 
 import UIKit
 
 class TextInShape: UITextView {
     
-    //
+    // 
     enum ShapeType:String{
         case Rectangle = ""
         case Circle = "sunny"
@@ -30,6 +29,9 @@ class TextInShape: UITextView {
                 exclusionPath.appendPath(rectClip)
                 exclusionPath.usesEvenOddFillRule = true
                 self.textContainer.exclusionPaths = [exclusionPath]
+                
+                //draw light background container for text
+                drawPathForShapeOnBackground(s)
             }
         }
     }
@@ -37,6 +39,18 @@ class TextInShape: UITextView {
     //--------------------------------------
     // MARK: - Private Methods
     //--------------------------------------
+    
+    private func drawPathForShapeOnBackground(s:ShapeType){
+        let path = pathForShape(s)
+        // scale path up slightly
+        path.applyTransform(CGAffineTransformScale(CGAffineTransformIdentity, 1.1, 1.1))
+        // correct translation
+        path.applyTransform(CGAffineTransformMakeTranslation(-0.05*path.bounds.width, -0.05*path.bounds.height))
+        let  circleLayer = CAShapeLayer()
+        circleLayer.fillColor = UIColor(white: 0.9, alpha: 1.0).CGColor
+        circleLayer.path = path.CGPath
+        self.layer.insertSublayer(circleLayer, atIndex: 0)
+    }
     
     // returns the path for a ShapeType
     private func pathForShape(s:ShapeType) -> UIBezierPath{
